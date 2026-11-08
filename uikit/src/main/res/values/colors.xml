@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="uikit_fallback_primary">#FF1976D2</color>
+    <color name="uikit_fallback_accent_light">#FF0D47A1</color>
+    <color name="uikit_fallback_accent_dark">#FF90CAF9</color>
+</resources>

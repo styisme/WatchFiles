@@ -1,0 +1,1 @@
+# Uikit consumer proguard rules

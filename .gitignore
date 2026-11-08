@@ -1,0 +1,22 @@
+# Gradle
+.gradle/
+build/
+*/build/
+local.properties
+
+# IDE
+.idea/
+*.iml
+
+# Outputs
+*.apk
+*.aar
+*.keystore
+sign.ini
+
+# Python
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store

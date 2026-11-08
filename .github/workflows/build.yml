@@ -1,0 +1,100 @@
+name: Build WatchFiles
+
+on:
+  push:
+    branches: [ main, master ]
+    tags: [ 'v*' ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17 (sdkmanager)
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+        with:
+          packages: 'platforms;android-30 build-tools;30.0.3 platform-tools'
+
+      - name: Set up JDK 8 Zulu
+        uses: actions/setup-java@v4
+        with:
+          distribution: zulu
+          java-version: '8'
+
+      - name: Point JAVA_HOME to JDK 8
+        run: |
+          if [ -n "$JAVA_HOME_8_X64" ]; then
+            echo "JAVA_HOME=$JAVA_HOME_8_X64" >> $GITHUB_ENV
+          fi
+
+      - name: Setup Gradle 5.6.4
+        run: |
+          wget -q https://services.gradle.org/distributions/gradle-5.6.4-bin.zip
+          unzip -q gradle-5.6.4-bin.zip
+          echo "$PWD/gradle-5.6.4/bin" >> $GITHUB_PATH
+
+      - name: Build Library AAR (Release)
+        run: gradle :uikit:assembleRelease --no-daemon --stacktrace
+
+      - name: Build App APK (Debug)
+        run: gradle :app:assembleDebug --no-daemon --stacktrace
+
+      - name: Upload AAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: uikit-aar
+          path: uikit/build/outputs/aar/*.aar
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: watchfiles-apk
+          path: app/build/outputs/apk/debug/*.apk
+
+      - name: Upload Build Log (on failure)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log
+          path: "**/build/outputs/logs/*.txt"
+
+  release:
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download AAR
+        uses: actions/download-artifact@v4
+        with:
+          name: uikit-aar
+          path: ./release_files
+
+      - name: Download APK
+        uses: actions/download-artifact@v4
+        with:
+          name: watchfiles-apk
+          path: ./release_files
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: release_files/*
+          generate_release_notes: true
+          overwrite_files: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,30 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+    defaultConfig {
+        applicationId "org.watchfiles"
+        minSdkVersion 10
+        targetSdkVersion 30
+        versionCode 2
+        versionName "1.1.0"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+        encoding = "UTF-8"
+    }
+    lintOptions { abortOnError false }
+}
+
+dependencies {
+    implementation project(':uikit')
+
+    // ===== 轻量可选依赖 =====
+    // 取消注释以获得 RAR / 7z 能力；不引入时 ZipExtractor 仅支持 ZIP。
+    // RAR: unrar5j — 纯 Java、零外部依赖、RAR4/5 双支持
+    // implementation 'io.github.realburst:unrar5j:2.0.3'
+    // 7z: kala-compress — commons-compress 的轻量无依赖分支，核心 <90KB
+    // implementation 'org.glavo.kala:kala-compress-archivers-sevenz:1.27.1-3'
+}

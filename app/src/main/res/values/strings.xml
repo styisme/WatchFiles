@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">手表文件</string>
+
+    <!-- 文件列表 -->
+    <string name="storage_root">内部存储</string>
+    <string name="folder">文件夹</string>
+    <string name="empty_dir">这里空空如也</string>
+    <string name="new_folder">新建文件夹</string>
+    <string name="new_folder_short">新建</string>
+    <string name="new_folder_default">新建文件夹</string>
+    <string name="paste">粘贴</string>
+    <string name="pasting">正在粘贴…</string>
+    <string name="more">更多</string>
+    <string name="refresh">刷新</string>
+    <string name="settings">设置</string>
+    <string name="about">关于</string>
+
+    <!-- 排序 -->
+    <string name="sort">排序方式</string>
+    <string name="sort_name">名称</string>
+    <string name="sort_size">大小</string>
+    <string name="sort_time">时间</string>
+    <string name="sort_type">类型</string>
+    <string name="sort_order">排序方向</string>
+    <string name="sort_asc">升序</string>
+    <string name="sort_desc">降序</string>
+
+    <!-- 文件操作 -->
+    <string name="rename">重命名</string>
+    <string name="copy">复制</string>
+    <string name="cut">剪切</string>
+    <string name="delete">删除</string>
+    <string name="copy_path">复制路径</string>
+    <string name="extract">解压</string>
+    <string name="info">信息</string>
+    <string name="toggle_hidden">显示/隐藏 隐藏文件</string>
+    <string name="confirm_delete">确定删除 %1$s 吗？此操作不可撤销。</string>
+    <string name="op_done">操作完成</string>
+    <string name="op_failed">操作失败</string>
+    <string name="no_pending">剪贴板为空</string>
+    <string name="path_copied">路径已复制</string>
+    <string name="pending_copy">已复制到剪贴板</string>
+    <string name="pending_cut">已剪切到剪贴板</string>
+    <string name="copy_progress">复制中 %1$d%%：%2$s</string>
+
+    <!-- 解压 -->
+    <string name="extract_to">解压到：\n%1$s</string>
+    <string name="extracting">正在解压…</string>
+    <string name="extract_progress">已解压 %1$d 项：%2$s</string>
+    <string name="extract_done">解压完成，共 %1$d 项</string>
+    <string name="extract_failed">解压失败：%1$s</string>
+    <string name="failed">失败</string>
+
+    <!-- 预览 -->
+    <string name="preview_text">文本预览</string>
+    <string name="preview_image">图片预览</string>
+    <string name="preview_truncated">文件较大，仅显示前 256 KB</string>
+    <string name="preview_binary">无法预览：二进制文件</string>
+    <string name="preview_error">无法预览</string>
+    <string name="close">关闭</string>
+
+    <!-- 权限 -->
+    <string name="perm_title">需要存储权限</string>
+    <string name="perm_msg">文件管理需要访问存储。请授予权限，否则只能浏览应用私有目录。</string>
+
+    <!-- 设置 -->
+    <string name="settings_theme">主题</string>
+    <string name="theme_auto">自动</string>
+    <string name="theme_light">浅色</string>
+    <string name="theme_dark">深色</string>
+    <string name="settings_accent">主题色</string>
+    <string name="accent_blue">蓝</string>
+    <string name="accent_indigo">靛</string>
+    <string name="accent_purple">紫</string>
+    <string name="accent_orange">橙</string>
+    <string name="accent_cyan">青</string>
+    <string name="accent_bluegrey">蓝灰</string>
+    <string name="settings_dynamic">动态取色（API 31+）</string>
+    <string name="settings_hidden">显示隐藏文件</string>
+    <string name="settings_text_size">预览字号</string>
+    <string name="settings_unzip">解压位置</string>
+    <string name="unzip_here">当前目录</string>
+    <string name="unzip_subdir">同名子目录</string>
+    <string name="settings_scale">界面缩放</string>
+    <string name="restart_hint">部分设置已生效</string>
+    <string name="about_text">手表文件 v1.1.0\n基于 wear-uikit 构建\nMIT License</string>
+
+    <!-- 系统集成 -->
+    <string name="open_picker">系统文件选择器</string>
+    <string name="no_file_picker">未找到可用的文件选择器</string>
+    <string name="importing">正在导入…</string>
+    <string name="import_failed">导入失败</string>
+    <string name="share">分享</string>
+</resources>
